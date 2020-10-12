@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -39,7 +40,10 @@ public class VistAndDonate {
         cap.setCapability("platformVersion","13.3");
         cap.setCapability("udid","27C73CC1-E5CC-4CAB-9DFB-4667534D64B5");
         cap.setCapability("platformName","iOS");
-        cap.setCapability("app", "/Users/ragaiealfy/Desktop/Swift UI & combinee/Welcome_To_SwiftUI/build/Release-iphonesimulator/Welcome_To_SwiftUI.app");
+         File classpathRoot = new File(System.getProperty("user.dir"));
+         System.out.println(classpathRoot.getAbsolutePath());
+         String urlForApp =  classpathRoot.getAbsolutePath() + "/src/test/resources/Welcome_To_SwiftUI.app";
+        cap.setCapability("app", urlForApp);
 
         URL url = new URL(" http://0.0.0.0:4723/wd/hub");
         driver = new AppiumDriver<MobileElement>(url, cap);
